@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from .models import Album
 
 
@@ -13,4 +13,9 @@ def home(request):
 
 
 def detail(request, album_id):
-    return HttpResponse(f'The Album ID is {album_id}')
+    try:
+        album = Album.objects.get(id=album_id)
+    except Album.DoesNotExist:
+        raise Http404("Album Doesn't Exist")
+    return render(request, 'music/detail.html', {'album': album})
+
