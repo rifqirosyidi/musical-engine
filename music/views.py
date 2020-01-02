@@ -1,10 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Album
 
 
 # Create your views here.
 def home(request):
-    return HttpResponse("Hi Music Home")
+    all_albums = Album.objects.all()
+    context = {
+        'all_albums': all_albums,
+    }
+    return render(request, 'music/home.html', context)
 
 
 def detail(request, album_id):
