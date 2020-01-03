@@ -11,10 +11,23 @@
     <img src="{{ album.album_logo }}" alt="">
     <h3>{{ album }} - {{ album.artist }}</h3>
 
-    <ul>
+    {% if error_messages %}
+        <p><strong>{{ error_messages }}</strong></p>
+    {% endif %}
+
+    <form action="{% url 'music:favorite' album.id %}" method="post">
+        {% csrf_token %}
         {% for song in album.song_set.all %}
-        <li>{{ song.song_title }} - {{ song.file_type }}</li>
+            <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
+            <label for="song{{ forloop.counter }}">
+                {{ song.song_title }}
+                {% if song.is_favorite %}
+                <img height="20px" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698904-icon-23-star-128.png" alt="">
+                {% endif %}
+            </label>
+            <br>
         {% endfor %}
-    </ul>
+        <button type="submit">Submit</button>
+    </form>
 </body>
 </html>
