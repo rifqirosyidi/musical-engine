@@ -8,6 +8,13 @@
     <title>Detail</title>
 </head>
 <body>
+    <img src="{{ album.album_logo }}" alt="">
     <h3>{{ album }} - {{ album.artist }}</h3>
+
+    <ul>
+        {% for song in album.song_set.all %}
+        <li>{{ song.song_title }} - {{ song.file_type }}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
