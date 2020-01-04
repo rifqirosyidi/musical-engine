@@ -10,8 +10,10 @@
                             <img src="{{ album.album_logo }}" alt="">
                             <span class="card-title"><strong>{{ album.artist }} - {{ album.album_title }}</strong></span>
                         </div>
-                        <div class="card-action">
-                            <a class="btn blue-grey darken-4 white-text" href="{% url 'music:detail' album.id %}">View Detail</a>
+                        <div class="card-action centered">
+                            <a class="btn-small blue-grey darken-4 white-text" href="{% url 'music:detail' album.id %}"><i class="material-icons">list</i></a>
+                            <a class="btn-small blue darken-4 white-text" href="{% url 'music:album-update' album.id %}"><i class="material-icons">mode_edit</i></a>
+                            <a class="btn-small red darken-4 white-text" href="{% url 'music:album-delete' album.id %}"><i class="material-icons">delete</i></a>
                         </div>
                     </div>
                 </div>

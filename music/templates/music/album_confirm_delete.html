@@ -1,0 +1,10 @@
+{% extends 'music/base.html' %}
+
+{% block title %} Delete Album {% endblock title%}
+
+{% block content %}
+   <form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ album.artist }} - {{ album.album_title }}"?</p>
+    <input type="submit" value="Confirm">
+</form>
+{% endblock content%}
