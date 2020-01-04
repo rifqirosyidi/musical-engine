@@ -3,23 +3,39 @@
 {% block title %} Album Detail {% endblock %}
 
 {% block content %}
-    <img src="{{ album.album_logo }}" alt="">
-    <h3>{{ album }} - {{ album.artist }}</h3>
 
-    {% if error_messages %}
-        <p><strong>{{ error_messages }}</strong></p>
-    {% endif %}
-    {% for song in album.song_set.all %}
-        <label>
-            <input type="radio" class="with-gap" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
-            <span>
-                        {{ song.song_title }}
-                        {% if song.is_favorite %}
-                        <img height="20px" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698904-icon-23-star-128.png"
-                             alt="">
-                        {% endif %}
-                    </span>
-        </label>
-    <br>
-    {% endfor %}
+{% if error_messages %}
+<p><strong>{{ error_messages }}</strong></p>
+{% endif %}
+
+<div class="row">
+    <div class="col s12 m4 l3 centered">
+        <img class="w-100" src="{{ album.album_logo }}" alt="">
+        <h5>{{ album }} - {{ album.artist }}</h5>
+        <p><small>Genre: {{ album.genre }}</small></p>
+    </div>
+
+    <div class="col s12 m8 l9">
+        <table>
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Audio File</th>
+                <th>Favorite</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for song in album.song_set.all %}
+            <tr>
+                <td>{{ song.song_title }}</td>
+                <td>{{ song.file_type }}</td>
+                <td>{{ song.is_favorite }}</td>
+            </tr>
+            {% endfor %}
+    </div>
+
+</div>
+
 {% endblock content %}

@@ -1,14 +1,22 @@
 {% extends 'music/base.html' %}
 
 {% block content %}
-    <h3>List Album Here : </h3>
-
     {% if all_albums %}
-    <ul>
-        {% for album in all_albums %}
-        <li><a href="{% url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
-        {% endfor %}
-    </ul>
+            <div class="row">
+                {% for album in all_albums %}
+                <div class="col s12 m4 l3">
+                    <div class="card card-small">
+                        <div class="card-image">
+                            <img src="{{ album.album_logo }}" alt="">
+                            <span class="card-title"><strong>{{ album.artist }} - {{ album.album_title }}</strong></span>
+                        </div>
+                        <div class="card-action">
+                            <a class="btn blue-grey darken-4 white-text" href="{% url 'music:detail' album.id %}">View Detail</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
     {% else %}
     <h3>You don't have any albums</h3>
     {% endif %}

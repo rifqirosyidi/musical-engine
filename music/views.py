@@ -11,6 +11,10 @@ class HomeView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
-    template_name = 'music/detail.html'
     model = Album
+    template_name = 'music/detail.html'
 
+
+class AlbumCreate(generic.CreateView):
+    model = Album
+    fields = '__all__'
