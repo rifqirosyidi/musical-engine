@@ -1,14 +1,14 @@
 {% extends 'music/base.html' %}
 
-{% block title %} Create New Album {% endblock title%}
+{% block title %} {{ naming }} Album {% endblock title %}
 
 {% block content %}
     <div class="row">
         <div class="input-field col s12 m6 offset-m3">
             <form action="" method="POST"enctype="multipart/form-data">
                 {% csrf_token %}
-                {{ form }}
-                <button class="btn waves-effect waves-light blue-grey darken-4" type="submit">Add New Album</button>
+                {{ form.as_p }}
+                <button class="btn waves-effect waves-light blue-grey darken-4" type="submit">{{ naming }} Album</button>
             </form>
         </div>
     </div>

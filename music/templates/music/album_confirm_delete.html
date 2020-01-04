@@ -3,8 +3,9 @@
 {% block title %} Delete Album {% endblock title%}
 
 {% block content %}
-   <form method="post">{% csrf_token %}
+<form method="post">{% csrf_token %}
     <p>Are you sure you want to delete "{{ album.artist }} - {{ album.album_title }}"?</p>
-    <input type="submit" value="Confirm">
+    <button class="btn orange darken-4" type="submit">Confirm</button>
+    <a href="{% url 'music:home' %}" class="btn blue-grey darken-4">Cancel</a>
 </form>
 {% endblock content%}

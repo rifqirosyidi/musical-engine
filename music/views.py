@@ -1,6 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from .models import Album
+from .forms import CreateUpdateAlbumForm
 
 
 class HomeView(generic.ListView):
@@ -17,13 +18,24 @@ class DetailView(generic.DetailView):
 
 
 class AlbumCreate(generic.CreateView):
-    model = Album
-    fields = '__all__'
+    form_class = CreateUpdateAlbumForm
+    template_name = 'music/album_form.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['naming'] = 'Create'
+        context = super(AlbumCreate, self).get_context_data(**kwargs)
+        return context
 
 
 class AlbumUpdate(generic.UpdateView):
     model = Album
-    fields = '__all__'
+    form_class = CreateUpdateAlbumForm
+    template_name = 'music/album_form.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['naming'] = 'Update'
+        context = super(AlbumUpdate, self).get_context_data(**kwargs)
+        return context
 
 
 class AlbumDelete(generic.DeleteView):
