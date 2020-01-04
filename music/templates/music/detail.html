@@ -9,21 +9,17 @@
     {% if error_messages %}
         <p><strong>{{ error_messages }}</strong></p>
     {% endif %}
-
-    <form action="{% url 'music:favorite' album.id %}" method="post">
-        {% csrf_token %}
-        {% for song in album.song_set.all %}
+    {% for song in album.song_set.all %}
         <label>
             <input type="radio" class="with-gap" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
             <span>
-                {{ song.song_title }}
-                {% if song.is_favorite %}
-                <img height="20px" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698904-icon-23-star-128.png" alt="">
-                {% endif %}
-            </span>
+                        {{ song.song_title }}
+                        {% if song.is_favorite %}
+                        <img height="20px" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698904-icon-23-star-128.png"
+                             alt="">
+                        {% endif %}
+                    </span>
         </label>
-        <br>
-        {% endfor %}
-        <button type="submit">Submit</button>
-    </form>
+    <br>
+    {% endfor %}
 {% endblock content %}
