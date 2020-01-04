@@ -1,13 +1,8 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Detail</title>
-</head>
-<body>
+{% extends 'music/base.html' %}
+
+{% block title %} Album Detail {% endblock %}
+
+{% block content %}
     <img src="{{ album.album_logo }}" alt="">
     <h3>{{ album }} - {{ album.artist }}</h3>
 
@@ -18,16 +13,17 @@
     <form action="{% url 'music:favorite' album.id %}" method="post">
         {% csrf_token %}
         {% for song in album.song_set.all %}
-            <input type="radio" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
-            <label for="song{{ forloop.counter }}">
+        <label>
+            <input type="radio" class="with-gap" id="song{{ forloop.counter }}" name="song" value="{{ song.id }}">
+            <span>
                 {{ song.song_title }}
                 {% if song.is_favorite %}
                 <img height="20px" src="https://cdn1.iconfinder.com/data/icons/hawcons/32/698904-icon-23-star-128.png" alt="">
                 {% endif %}
-            </label>
-            <br>
+            </span>
+        </label>
+        <br>
         {% endfor %}
         <button type="submit">Submit</button>
     </form>
-</body>
-</html>
+{% endblock content %}

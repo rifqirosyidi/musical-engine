@@ -1,3 +1,23 @@
-.title-font{
+.title-font {
     font-family: 'Righteous', cursive;
+}
+
+.btn-border-2 {
+    border: 2px solid #263238;
+    height: 45px;
+    width: 100%;
+}
+
+#search {
+    color: darkgray;
+}
+
+.input-group{
+  display:table;
+  width:100%;
+}
+
+.input-group .input-field,
+.input-group .input-group-addon{
+  display:table-cell;
 }
