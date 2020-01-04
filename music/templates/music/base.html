@@ -29,9 +29,9 @@
                         </div>
                     </form>
                 </li>
-                <li><a href="#"><i class="material-icons left">album</i>Albums</a></li>
+                <li><a href="{% url 'music:home' %}"><i class="material-icons left">album</i>Albums</a></li>
                 <li><a href="#"><i class="material-icons left">music_note</i>Songs</a></li>
-                <li><a href="#"><i class="material-icons left">add</i>Add Album</a></li>
+                <li><a href="{% url 'music:album-create' %}"><i class="material-icons left">add</i>Add Album</a></li>
                 <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
             </ul>
         </div>
@@ -48,9 +48,9 @@
             </div>
         </form>
     </li>
-    <li><a href="#"><i class="material-icons left">album</i>Albums</a></li>
+    <li><a href="{% url 'music:home' %}"><i class="material-icons left">album</i>Albums</a></li>
     <li><a href="#"><i class="material-icons left">music_note</i>Songs</a></li>
-    <li><a href="#"><i class="material-icons left">add</i>Add Album</a></li>
+    <li><a href="{% url 'music:album-create' %}"><i class="material-icons left">add</i>Add Album</a></li>
     <li><a href="#"><i class="material-icons left">exit_to_app</i>Logout</a></li>
 </ul>
 
